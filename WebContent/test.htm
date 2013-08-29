@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.textchange.min.js"></script>
+
+</head>
+<body>
+<form>
+
+category: <span id="category" name="category"></span><br/>
+title: <input type="text" id="title" id="title" /><br/>
+content: <textarea id="content" name="content" ></textarea>
+</form>
+
+<script>
+function test(){
+	var title = $("#title").val();
+	var content = title+","+$("#content").val();
+	$.getJSON('/molo/classify/category/'+content, function(data) {
+		 $.each(data, function(key, val) {
+		    if(key == 'category') $("#category").html(val);
+		 });
+	});
+}
+jQuery(document).ready(function(){
+	$("#content").change(function(){
+		test();
+	});
+	$("#title").change(function(){
+		test();
+	});
+	/*
+	$('#content').bind('textchange', function (event, previousText) {
+		var content = $("#content").val();
+		$.getJSON('/molo/classify/'+content, function(data) {
+			 $.each(data, function(key, val) {
+			    if(key == 'category') $("#category").html("c:"+val);
+			    if(key == 'others') $("#category").html($("#category").html()+"o:"+val);
+			 });
+		});
+	});*/
+});
+
+</script>
+</body>
+</html>
