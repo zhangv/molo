@@ -12,14 +12,14 @@
 
 	<context:property-placeholder location="classpath:molo.properties"/>
 
-	<context:component-scan base-package="com.baixing.molo.controller" />
+	<context:component-scan base-package="com.modofo.molo.controller" />
 
 	<mvc:annotation-driven />
 
-	<bean class="com.baixing.molo.TopicManager" p:sampleDir="${sample.dir}" p:tempDir="${temp.dir}"/>
-	<bean class="com.baixing.molo.classify.Trainer" p:sampleDir="${sample.dir}" p:tempDir="${temp.dir}" p:modelDir="${model.dir}"/>
-	<bean class="com.baixing.molo.classify.Classifier" p:tempDir="${temp.dir}" p:modelDir="${model.dir}"/>
-	<bean class="com.baixing.molo.SampleManager" p:sampleDir="${sample.dir}"/>
-	<bean class="com.baixing.molo.recommend.Recommender" p:sampleDir="${sample.dir}" p:tempDir="${temp.dir}"/>
+	<bean class="com.modofo.molo.TopicManager" p:sampleDir="${sample.dir}" p:tempDir="${temp.dir}"/>
+	<bean class="com.modofo.molo.classify.Trainer" p:sampleDir="${sample.dir}" p:tempDir="${temp.dir}" p:modelDir="${model.dir}"/>
+	<bean class="com.modofo.molo.classify.Classifier" p:tempDir="${temp.dir}" p:modelDir="${model.dir}"/>
+	<bean class="com.modofo.molo.SampleManager" p:sampleDir="${sample.dir}"/>
+	<bean class="com.modofo.molo.recommend.Recommender" p:sampleDir="${sample.dir}" p:tempDir="${temp.dir}"/>
 	
 </beans>
